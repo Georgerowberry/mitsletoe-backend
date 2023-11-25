@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 if (!process.env.STRIPE_SK) {
@@ -13,5 +14,8 @@ const stripe = new Stripe(process.env.STRIPE_SK);
 
 export async function GET(request: Request) {
   await stripe.terminal.readers.cancelAction(READER_ID);
-  return Response.json({ message: "done" });
+  return NextResponse.json({ message: "done" });
 }
+
+export const dynamic = "force-dynamic";
+

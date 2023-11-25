@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 if (!process.env.STRIPE_SK) {
@@ -33,8 +34,10 @@ export async function GET(request: Request) {
       break;
     } catch (error) {
       console.log(error);
-      return Response.json(error);
+      return NextResponse.json(error);
     }
   }
-  return Response.json({ message: "Sent to Terminal" });
+  return NextResponse.json({ message: "Sent to Terminal" });
 }
+
+export const dynamic = "force-dynamic";
