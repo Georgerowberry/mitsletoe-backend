@@ -30,11 +30,11 @@ export async function GET(request: Request) {
           payment_intent: intent.id,
         }
       );
-      Response.json({ message: "Sent to Terminal" });
       break;
     } catch (error) {
       console.log(error);
       return Response.json(error);
     }
   }
+  return Response.json({ message: "Sent to Terminal" });
 }
